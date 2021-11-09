@@ -427,3 +427,19 @@ func (e *MetadataExpand) WorkerCall(totalStorage,usedStorage types.U128) (types.
 	//recipientPubkey := utils.AddressToPublicKey(to)
 	return NewCall(callIdx,totalStorage,usedStorage)
 }
+
+/*
+Worker.register
+*/
+func (e *MetadataExpand) StakingCall() (types.Call, error) {
+	var (
+		call types.Call
+	)
+	callIdx, err := e.MV.GetCallIndex("Staking", "chill")
+	if err != nil {
+		return call, err
+	}
+
+	//recipientPubkey := utils.AddressToPublicKey(to)
+	return NewCall(callIdx)
+}
