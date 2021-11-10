@@ -1,7 +1,7 @@
 module github.com/LwwL-123/ttc-go
 
 go 1.17
-
+retract  v0.0.1
 require (
 	github.com/LwwL-123/go-substrate-crypto v1.0.2
 	github.com/LwwL-123/go-substrate-rpc-client/v3 v3.0.6
