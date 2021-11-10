@@ -415,7 +415,7 @@ func (e *MetadataExpand) UtilityBatchTxWithMemo(to, memo string, amount uint64) 
 /*
 Worker.register
 */
-func (e *MetadataExpand) WorkerCall(totalStorage,usedStorage types.U128) (types.Call, error) {
+func (e *MetadataExpand) WorkerCall(totalStorage, usedStorage types.U128) (types.Call, error) {
 	var (
 		call types.Call
 	)
@@ -425,21 +425,21 @@ func (e *MetadataExpand) WorkerCall(totalStorage,usedStorage types.U128) (types.
 	}
 
 	//recipientPubkey := utils.AddressToPublicKey(to)
-	return NewCall(callIdx,totalStorage,usedStorage)
+	return NewCall(callIdx, totalStorage, usedStorage)
 }
 
 /*
 Worker.register
 */
-func (e *MetadataExpand) StakingCall() (types.Call, error) {
+func (e *MetadataExpand) TestCall(bytes types.Bytes) (types.Call, error) {
 	var (
 		call types.Call
 	)
-	callIdx, err := e.MV.GetCallIndex("Staking", "chill")
+	callIdx, err := e.MV.GetCallIndex("Worker", "check_param")
 	if err != nil {
 		return call, err
 	}
 
 	//recipientPubkey := utils.AddressToPublicKey(to)
-	return NewCall(callIdx)
+	return NewCall(callIdx, bytes)
 }

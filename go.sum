@@ -39,10 +39,6 @@ github.com/ChainSafe/go-schnorrkel v0.0.0-20201021020641-d3c6d3118d10/go.mod h1:
 github.com/DATA-DOG/go-sqlmock v1.3.3/go.mod h1:f/Ixk793poVmq4qj/V1dPUg2JEAKC73Q5eFN3EC/SaM=
 github.com/LwwL-123/go-substrate-crypto v1.0.2 h1:F1R3cUibhDA4+tCdPfsoWnGXOUreXWb2bCc6bOZWvFo=
 github.com/LwwL-123/go-substrate-crypto v1.0.2/go.mod h1:L3AxNy/Js9VYFxU4A7MA78/scq2i2iiD5NEGHIb3RN0=
-github.com/LwwL-123/go-substrate-rpc-client v3.0.5+incompatible h1:rCkEkWiONsaPBlLrARu90BCWQS5YQna4LmNTFbWYXPY=
-github.com/LwwL-123/go-substrate-rpc-client v3.0.5+incompatible/go.mod h1:7o695f11OQDxAbVFeR7vTgPamB3Vbn8Bjq00jfoKZ2w=
-github.com/LwwL-123/go-substrate-rpc-client/v3 v3.0.5 h1:heVj30NOGjMhG3FcwXzY7JyhKHAlVYcAYKqx2yblv3w=
-github.com/LwwL-123/go-substrate-rpc-client/v3 v3.0.5/go.mod h1:a1bLRkH3l+l5+5EyTWgp0Fj0soWSR6fGo+oSepCwAWo=
 github.com/LwwL-123/go-substrate-rpc-client/v3 v3.0.6 h1:F5JeSyaNld6ZtNFQAOxXnG3nbxWuNsFfK6uCHc8s208=
 github.com/LwwL-123/go-substrate-rpc-client/v3 v3.0.6/go.mod h1:jG5dVu8FVrg+Cr/Xi/zSj129a32isVjTUnZkVQ0CCAE=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=

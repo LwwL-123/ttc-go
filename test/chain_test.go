@@ -6,7 +6,7 @@ import (
 	"github.com/LwwL-123/ttc-go/client"
 	"github.com/LwwL-123/ttc-go/expand"
 	"github.com/LwwL-123/ttc-go/expand/base"
-	"github.com/LwwL-123/ttc-go/expand/bifrost"
+	"github.com/LwwL-123/ttc-go/expand/polkadot"
 	"reflect"
 	"strings"
 	"testing"
@@ -17,20 +17,22 @@ import (
 
 */
 func Test_Chain(t *testing.T) {
-	c, err := client.New("wss://rpc.polkadot.io")
+	c, err := client.New("ws://127.0.0.1:9944")
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	//b := polkadot.PolkadotEventRecords{}
-	b := bifrost.BifrostEventRecords{}
+	b := polkadot.PolkadotEventRecords{}
+	//b := bifrost.BifrostEventRecords{}
 	existMap := getEventTypesFieldName(b)
 	fmt.Println(c.ChainName)
 	fmt.Println(c.Meta.Version)
-	for _, mod := range c.Meta.AsMetadataV12.Modules {
+	for _, mod := range c.Meta.AsMetadataV13.Modules {
 		if mod.HasEvents {
+			// 遍历所有events
 			for _, event := range mod.Events {
 				typeName := fmt.Sprintf("%s_%s", mod.Name, event.Name)
+				// 判断是否是substrate自带event，如果如，直接跳过打印
 				if IsExist(typeName, existMap) {
 					continue
 				}
@@ -54,11 +56,11 @@ func Test_Chain(t *testing.T) {
 }
 
 func Test_Chain2(t *testing.T) {
-	c, err := client.New("wss://rpc.polkadot.io")
+	c, err := client.New("ws://127.0.0.1:9944")
 	if err != nil {
 		t.Fatal(err)
 	}
-	for _, mod := range c.Meta.AsMetadataV12.Modules {
+	for _, mod := range c.Meta.AsMetadataV13.Modules {
 		if mod.HasEvents {
 			for _, event := range mod.Events {
 				for _, arg := range event.Args {
@@ -78,17 +80,21 @@ func Test_Chain2(t *testing.T) {
 	}
 }
 
+// 获取所有的event事件，需要定义
 func Test_New(t *testing.T) {
-	//b := polkadot.PolkadotEventRecords{}
-	////tp:=reflect.TypeOf(b)
-	////fmt.Println(tp.NumField())
-	////fmt.Println(tp.Field(1).Name)
-	//getEventTypesFieldName(b)
+	b := polkadot.PolkadotEventRecords{}
+	tp := reflect.TypeOf(b)
+	fmt.Println(tp.NumField())
+	for i := 0; i < tp.NumField(); i++ {
+		fmt.Println(tp.Field(i).Name)
 
-	s := "sp_std::marker::PhantomData<(AccountId, Event)>"
-	namespaceSlice := strings.Split(s, "::")
-	fmt.Println(len(namespaceSlice))
-	fmt.Println(namespaceSlice)
+	}
+	getEventTypesFieldName(b)
+
+	//s := "sp_std::marker::PhantomData<(AccountId, Event)>"
+	//namespaceSlice := strings.Split(s, "::")
+	//fmt.Println(len(namespaceSlice))
+	//fmt.Println(namespaceSlice)
 }
 
 func getEventTypesFieldName(ier expand.IEventRecords) []string {
@@ -131,11 +137,11 @@ func IsExist(typeName string, existTypes []string) bool {
 }
 
 func Test_GetAllType(t *testing.T) {
-	kList, err := getAllTypes("wss://kusama-rpc.polkadot.io", 13)
+	kList, err := getAllTypes("ws://127.0.0.1:9944", 13)
 	if err != nil {
 		t.Fatal(err)
 	}
-	pList, err := getAllTypes("wss://rpc.polkadot.io", 12)
+	pList, err := getAllTypes("ws://127.0.0.1:9944", 13)
 	if err != nil {
 		t.Fatal(err)
 	}

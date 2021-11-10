@@ -9,7 +9,7 @@ import (
 )
 
 func Test_GetBlockByNumber(t *testing.T) {
-	c, err := client.New("wss://rpc.polkadot.io")
+	c, err := client.New("ws://127.0.0.1:9944")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -18,7 +18,7 @@ func Test_GetBlockByNumber(t *testing.T) {
 	/*
 		Ksm: 7834050
 	*/
-	resp, err := c.GetBlockByNumber(7467638)
+	resp, err := c.GetBlockByNumber(1849)
 	if err != nil {
 		t.Fatal(err)
 	}
