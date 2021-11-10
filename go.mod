@@ -4,7 +4,6 @@ go 1.17
 
 require (
 	github.com/LwwL-123/go-substrate-crypto v1.0.2
-	github.com/LwwL-123/go-substrate-rpc-client v3.0.5+incompatible
 	github.com/LwwL-123/go-substrate-rpc-client/v3 v3.0.6
 	github.com/huandu/xstrings v1.3.2
 	github.com/shopspring/decimal v1.3.1
